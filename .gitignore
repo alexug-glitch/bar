@@ -4,3 +4,6 @@ __pycache__/
 output/
 *.csv
 !tests/fixtures/*.csv
+build/
+dist/
+*.spec
