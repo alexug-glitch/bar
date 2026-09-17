@@ -57,6 +57,15 @@ pip install -r requirements.txt
 python3 scripts/gui_extract_barcodes.py
 ```
 
+### Если .exe при запуске пишет ошибку про libiconv.dll / libzbar
+
+Значит вы собирали через старую команду напрямую через `pyinstaller`, а не
+через `build_exe.bat` / `build_exe.py`. `pyzbar` на Windows зависит от DLL
+(`libzbar-64.dll`, `libiconv.dll`), которые PyInstaller в режиме `--onefile`
+не всегда кладёт туда, где их ищет pyzbar. `build_exe.py` находит эти DLL
+в установленном пакете `pyzbar` и подключает их вручную в нужное место —
+пересоберите .exe через `build_exe.bat`, и ошибка уйдёт.
+
 ## Формат CSV
 
 | Колонка        | Описание                                             |
